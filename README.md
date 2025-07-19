@@ -19,7 +19,7 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .card:hover {
-      transform: translateY(-12px) scale(1.05);
+      transform: translateY(-12px) scale(1.02);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     }
     .btn {
@@ -27,6 +27,10 @@
     }
     .btn:hover {
       transform: scale(1.1);
+    }
+    .nav-btn.active {
+      background-color: #1e40af;
+      animation: pulse 2s infinite;
     }
     .section-hidden {
       opacity: 0;
@@ -38,7 +42,7 @@
       transform: translateY(0);
     }
     .tableau-embed {
-      height: 600px;
+      height: 800px;
       width: 100%;
       border-radius: 1rem;
       overflow: hidden;
@@ -52,9 +56,6 @@
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
-    }
-    .pulse {
-      animation: pulse 2s infinite;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -72,6 +73,15 @@
     </div>
   </header>
 
+  <!-- Navigation Bar -->
+  <nav class="sticky top-0 bg-white shadow-lg z-10 py-4">
+    <div class="container mx-auto px-4 flex justify-center gap-4">
+      <a href="#strategic" class="nav-btn bg-blue-600 text-white py-2 px-6 rounded-full btn hover:bg-blue-700">דשבורד אסטרטגי 🌍</a>
+      <a href="#managerial" class="nav-btn bg-green-600 text-white py-2 px-6 rounded-full btn hover:bg-green-700">דשבורד ניהולי 👨‍💼</a>
+      <a href="#operational" class="nav-btn bg-purple-600 text-white py-2 px-6 rounded-full btn hover:bg-purple-700">דשבורד תפעולי ⚙️</a>
+    </div>
+  </nav>
+
   <!-- Main Content -->
   <main class="container mx-auto px-4 py-12">
     <!-- System Overview -->
@@ -82,17 +92,14 @@
         <p class="text-lg leading-relaxed text-gray-700">
           מערכת המידע שלנו למכירת רכבים היא פלטפורמה מתקדמת לניתוח נתונים ממכירות, מלאי ולקוחות. היא מספקת דשבורדים אינטראקטיביים ב-Tableau המותאמים להנהלה, מנהלים וצוותים תפעוליים, לקבלת החלטות מהירות ומדויקות! 📈😊
         </p>
-        <img src="https://source.unsplash.com/800x400/?analytics,car" alt="תצוגת ניתוח נתונים לרכבים" class="mt-6 rounded-xl w-full h-64 object-cover">
       </div>
     </section>
 
     <!-- Dashboards Section -->
-    <section id="dashboards" class="mb-20 section-hidden">
-      <h2 class="text-4xl font-bold text-center text-blue-900 mb-10">דשבורדים אינטראקטיביים 📊</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Strategic Dashboard -->
+    <section id="dashboards" class="mb-20">
+      <!-- Strategic Dashboard -->
+      <div id="strategic" class="mb-12 section-hidden">
         <div class="bg-gradient-to-br from-blue-200 to-blue-400 p-8 rounded-3xl shadow-xl card">
-          <img src="https://source.unsplash.com/400x200/?charts,strategy" alt="דשבורד אסטרטגי" class="w-full h-40 object-cover rounded-lg mb-4">
           <h3 class="text-2xl font-semibold text-blue-800 mb-3">דשבורד אסטרטגי 🌍</h3>
           <p class="text-gray-700 mb-4">
             מיועד להנהלה הבכירה, מציג הכנסות, נתח שוק ותחזיות עם גרפים מרהיבים! 📈
@@ -104,10 +111,11 @@
           </ul>
           <iframe src="https://public.tableau.com/views/_17529314688580/sheet3?:language=en-US&:display_count=n&:origin=viz_share_link&:showVizHome=no" class="tableau-embed" title="דשבורד אסטרטגי"></iframe>
         </div>
+      </div>
 
-        <!-- Managerial Dashboard -->
+      <!-- Managerial Dashboard -->
+      <div id="managerial" class="mb-12 section-hidden">
         <div class="bg-gradient-to-br from-green-200 to-green-400 p-8 rounded-3xl shadow-xl card">
-          <img src="https://source.unsplash.com/400x200/?business,management" alt="דשבורד ניהולי" class="w-full h-40 object-cover rounded-lg mb-4">
           <h3 class="text-2xl font-semibold text-green-800 mb-3">דשבורד ניהולי 👨‍💼</h3>
           <p class="text-gray-700 mb-4">
             תומך במנהלי מחלקות עם נתונים על אנשי מכירות, סניפים ודגמים! 😊
@@ -119,10 +127,11 @@
           </ul>
           <iframe src="https://public.tableau.com/views/_17529321384840/sheet10?:language=en-US&:display_count=n&:origin=viz_share_link&:showVizHome=no" class="tableau-embed" title="דשבורד ניהולי"></iframe>
         </div>
+      </div>
 
-        <!-- Operational Dashboard -->
+      <!-- Operational Dashboard -->
+      <div id="operational" class="mb-12 section-hidden">
         <div class="bg-gradient-to-br from-purple-200 to-purple-400 p-8 rounded-3xl shadow-xl card">
-          <img src="https://source.unsplash.com/400x200/?operations,data" alt="דשבורד תפעולי" class="w-full h-40 object-cover rounded-lg mb-4">
           <h3 class="text-2xl font-semibold text-purple-800 mb-3">דשבורד תפעולי ⚙️</h3>
           <p class="text-gray-700 mb-4">
             מסייע לצוותים תפעוליים בניהול עסקאות ותהליכים! 🚀
@@ -132,8 +141,7 @@
             <li>פערים בין מחירונים לתשלומים</li>
             <li>גיל לקוח מול סכום קנייה</li>
           </ul>
-          <iframe src="https://public
-.tableau.com/views/_17529322897620/sheet11?:language=en-US&:display_count=n&:origin=viz_share_link&:showVizHome=no" class="tableau-embed" title="דשבורד תפעולי"></iframe>
+          <iframe src="https://public.tableau.com/views/_17529322897620/sheet11?:language=en-US&:display_count=n&:origin=viz_share_link&:showVizHome=no" class="tableau-embed" title="דשבורד תפעולי"></iframe>
         </div>
       </div>
     </section>
@@ -142,7 +150,8 @@
   <!-- Footer -->
   <footer class="hero-bg text-white py-10">
     <div class="container mx-auto px-4 text-center">
-      <p class="text-lg">© 2025 מערכת ניתוח נתונים למכירת רכבים. כל הזכויות שמורות. 🎉</p>
+      <p class="text-lg mb-4">© 2025 מערכת ניתוח נתונים למכירת רכבים. כל הזכויות שמורות. 🎉</p>
+      <a href="#overview" class="inline-block bg-white text-blue-600 font-semibold py-2 px-6 rounded-full btn hover:bg-blue-100">חזור למעלה ⬆️</a>
     </div>
   </footer>
 
@@ -150,14 +159,20 @@
     // Scroll animation for sections
     document.addEventListener('DOMContentLoaded', () => {
       const sections = document.querySelectorAll('.section-hidden');
+      const navButtons = document.querySelectorAll('.nav-btn');
+      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('section-visible');
+            // Highlight active nav button
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.querySelector(`a[href="#${entry.target.id}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.2 });
 
       sections.forEach(section => observer.observe(section));
     });
